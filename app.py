@@ -115,7 +115,7 @@ def reg():
 
 @app.route('/user_page', methods=["GET",'POST'])
 def index_user():
-    user = Users.query.filter_by().first()
+    user = Users.query.filter_by(id = session['id']).first()
     if request.method == 'POST':
         file = request.files['file']
         upload = Upload(filename = file.filename, Data = file.read(), Login = user.login)
